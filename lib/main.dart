@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/appels', page: () =>AppelsView()),
       ],
       theme: ThemeData(
+      fontFamily: 'OpenSans',
       primaryColor: Color(0xFF075E54),
       primarySwatch: Colors.blue,
       backgroundColor: Color(0xFF177767),

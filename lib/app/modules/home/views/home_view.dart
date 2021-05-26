@@ -13,43 +13,69 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-          child: Scaffold(
+      initialIndex: 1,
+      child: Scaffold(
         appBar: AppBar(
           elevation: 0.0,
           title: Text('WhatsApp'),
           backgroundColor: Color.fromRGBO(46, 139, 87, 1),
           actions: [
             IconButton(
-              onPressed: () {print("recherche");}, 
               icon: Icon(Icons.search),
+              onPressed: () {
+                print("recherche");
+              },
             ),
-            IconButton(
-              onPressed: () {print("menu");}, 
-              icon: Icon(Icons.more_vert),
+            PopupMenuButton<String>(
+              onSelected: (value) {
+                print(value);
+              },
+              itemBuilder: (BuildContext ctx) {
+                return 
+                [
+                  PopupMenuItem(
+                    child: Text('Nouveau groupe'),
+                    value: 'Nouveau groupe',
+                  ),
+                  PopupMenuItem(
+                    child: Text('Nouvelle diffusion'),
+                    value: 'Nouvelle diffusion',
+                  ),
+                  PopupMenuItem(
+                    child: Text('WhatsApp  Web'),
+                    value: 'WhatsApp  Web',
+                  ),
+                  PopupMenuItem(
+                    child: Text('Message important'),
+                    value: 'Message important',
+                  ),
+                  PopupMenuItem(
+                    child: Text('Paramètres'),
+                    value: 'paramètre',
+                  ),
+                ];
+              },
             ),
           ],
           bottom: TabBar(
-              indicatorColor: Colors.white,
-              tabs: [
-                Tab(icon: Icon(Icons.camera_alt)),
-                Tab(text: "DISC."),
-                Tab(text: 'STATUS'),
-                Tab(text: 'APPELS'),
-                
-              ],
-            ),
-        ),
-          
-        body: TabBarView(
-            children: [
-              AppPhotoView(),
-              DialoguesView(),
-              StatutView(),
-              AppelsView(),
-              // Get.toNamed('/statut');
-              
+            indicatorColor: Colors.white,
+            tabs: [
+              Tab(icon: Icon(Icons.camera_alt)),
+              Tab(text: "DISC."),
+              Tab(text: 'STATUS'),
+              Tab(text: 'APPELS'),
             ],
           ),
+        ),
+        body: TabBarView(
+          children: [
+            AppPhotoView(),
+            DialoguesView(),
+            StatutView(),
+            AppelsView(),
+            // Get.toNamed('/statut');
+          ],
+        ),
       ),
     );
   }

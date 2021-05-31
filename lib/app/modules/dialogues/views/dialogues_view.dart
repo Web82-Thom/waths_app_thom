@@ -11,7 +11,7 @@ import '../controllers/dialogues_controller.dart';
 
 class DialoguesView extends GetView<DialoguesController> {
   DialoguesController dialoguesController = Get.put(DialoguesController(),);
-  DialoguesView(Key key) : super (key: key);
+  // DialoguesView(Key key) : super (key: key);
   final containerRadius = Radius.circular(30.0);
 
   List<DialogueModel> dialogues = [

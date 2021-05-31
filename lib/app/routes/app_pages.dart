@@ -7,6 +7,7 @@ import 'package:whats_app_thom/app/modules/appels/bindings/appels_binding.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
 import 'package:whats_app_thom/app/modules/dialogue_private/bindings/dialogue_private_binding.dart';
 import 'package:whats_app_thom/app/modules/dialogue_private/views/dialogue_private_view.dart';
+import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
 import 'package:whats_app_thom/app/modules/dialogues/bindings/dialogues_binding.dart';
 import 'package:whats_app_thom/app/modules/dialogues/views/dialogues_view.dart';
 import 'package:whats_app_thom/app/modules/home/bindings/home_binding.dart';

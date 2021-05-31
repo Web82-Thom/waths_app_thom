@@ -71,7 +71,7 @@ class HomeView extends GetView<HomeController> {
         body: TabBarView(
           children: [
             AppPhotoView(),
-            DialoguesView(Key('key')),
+            DialoguesView(),
             StatutView(),
             AppelsView(),
             // Get.toNamed('/statut');

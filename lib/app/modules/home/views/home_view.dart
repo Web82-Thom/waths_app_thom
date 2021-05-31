@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/app_photo_view.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
+import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
 import 'package:whats_app_thom/app/modules/dialogues/views/dialogues_view.dart';
 import 'package:whats_app_thom/app/modules/statut/views/statut_view.dart';
 
@@ -70,7 +71,7 @@ class HomeView extends GetView<HomeController> {
         body: TabBarView(
           children: [
             AppPhotoView(),
-            DialoguesView(),
+            DialoguesView(Key('key')),
             StatutView(),
             AppelsView(),
             // Get.toNamed('/statut');

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
+import 'package:whats_app_thom/app/modules/dialogue_private/views/dialogue_private_view.dart';
 import 'package:whats_app_thom/app/modules/dialogues/views/dialogues_view.dart';
 import 'package:whats_app_thom/app/modules/home/views/home_view.dart';
 import 'package:whats_app_thom/app/modules/statut/views/statut_view.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/dialogues', page: () =>DialoguesView()),
         GetPage(name: '/status', page: () =>StatutView()),
         GetPage(name: '/appels', page: () =>AppelsView()),
+        GetPage(name: '/dialogue-private', page: () =>DialoguePrivateView()),
       ],
       theme: ThemeData(
       fontFamily: 'OpenSans',

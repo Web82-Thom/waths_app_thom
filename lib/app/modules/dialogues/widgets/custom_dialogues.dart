@@ -24,6 +24,7 @@ class CustomDialogues extends StatelessWidget {
       child:   
       Expanded(
           child: ListView.builder(
+            
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: dialoguesController.dialogues.length,

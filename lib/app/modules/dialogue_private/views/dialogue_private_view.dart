@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:get_cli/common/utils/json_serialize/json_ast/tokenize.dart';
+// import 'package:get_cli/common/utils/json_serialize/json_ast/json_ast.dart';
 import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
+import 'package:whats_app_thom/app/modules/dialogues/controllers/dialogues_controller.dart';
 import 'package:whats_app_thom/app/routes/app_pages.dart';
 
 import '../controllers/dialogue_private_controller.dart';
 
 class DialoguePrivateView extends GetView<DialoguePrivateController> {
-  DialoguePrivateController dialoguesPrivateController = Get.put(DialoguePrivateController(),);
-  // DialoguePrivateView(Key key,this.dialogueModel);
+  final DialoguesController dialoguesController = Get.put(DialoguesController(),);
+  final DialoguePrivateController dialoguePrivateController = Get.put(DialoguePrivateController(),);
+  
+  // DialoguePrivateView(this.dialogueModel);
   // final DialogueModel dialogueModel;
-
+  // get index => dialoguesPrivateController.dialogues[index];
+  var index = 3;
   @override
   Widget build(BuildContext context) {
+    DialoguePrivateController dialoguesPrivateController = Get.find();
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 30,
@@ -22,8 +29,9 @@ class DialoguePrivateView extends GetView<DialoguePrivateController> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CircleAvatar(child: SvgPicture.asset(
-              // dialogueModel.isGroup ?
-              // 'assets/icons/groups.svg':
+              // dialogueModel.name ?
+              dialoguesController.dialogues[index].isGroup ? 
+              'assets/icons/groups.svg':
                 "assets/icons/person.svg",
               
               color: Colors.white,
@@ -34,6 +42,7 @@ class DialoguePrivateView extends GetView<DialoguePrivateController> {
             InkWell(
               onTap: () {
                 print('inkWell');
+                // print(dialogueModel.isGroup);
               },
               child: Container(
                 margin: EdgeInsets.all(5.0),
@@ -42,14 +51,14 @@ class DialoguePrivateView extends GetView<DialoguePrivateController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Prenom', 
+                     dialoguesController.dialogues[index].name, 
                       style: TextStyle(
                         fontSize: 15.5,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'Vu aujourd\'hui à 14h02', 
+                      'Vu aujourd\'hui à ' + dialoguesController.dialogues[index].time, 
                       style: TextStyle(
                         fontSize: 8.0,
                         fontWeight: FontWeight.normal,

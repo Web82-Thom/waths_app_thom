@@ -11,19 +11,15 @@ import '../controllers/dialogues_controller.dart';
 
 class DialoguesView extends GetView<DialoguesController> {
   DialoguesController dialoguesController = Get.put(DialoguesController(),);
-  // DialoguesView(Key key) : super (key: key);
   final containerRadius = Radius.circular(30.0);
-
-  List<DialogueModel> dialogues = [
-    DialogueModel('Thomas ORTA', 'person.svg', false, '14h29', 'Ola'),
-    DialogueModel('Lisa ORTA', 'person.svg', false, '14h29', 'Que tale?'),
-    DialogueModel('Sandrine ORTA', 'groups.svg', true, '14h15', 'Miuy bien ? y tu?'),
-    DialogueModel('Noah ORTA', 'groups.svg', true, '14h15', 'Commo te liamas'),
-    DialogueModel('M-G ORTA', 'person.svg', false, '14h29', '????????????'),
-  ];
+  // DialoguesController dialoguesController = Get.find();
+  
+  // final int index;
+  // DialoguesView(this.index);
   
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -31,9 +27,16 @@ class DialoguesView extends GetView<DialoguesController> {
         },
         child: Icon(Icons.chat, color: Colors.white),
       ),
-      body: ListView.builder(
-        itemCount: dialogues.length,
-        itemBuilder: (context, index) => CustomDialogues(dialogues[index]),
+      body: Container(
+        child: 
+            ListView.builder(
+          itemCount: dialoguesController.dialogues.length,
+          itemBuilder: (context, index) { 
+            return CustomDialogues(dialoguesController.dialogues[index]);
+           
+          },
+          ),
+        
       ),
     );
   }

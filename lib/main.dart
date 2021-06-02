@@ -27,12 +27,12 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/dialogue-private', page: () =>DialoguePrivateView()),
       ],
       theme: ThemeData(
-      fontFamily: 'OpenSans',
-      primaryColor: Color(0xFF075E54),
-      primarySwatch: Colors.blue,
-      backgroundColor: Color(0xFF177767),
-      accentColor: Colors.green,
-      accentColorBrightness: Brightness.dark,
+        fontFamily: 'OpenSans',
+        primaryColor: Color(0xFF075E54),
+        primarySwatch: Colors.blue,
+        backgroundColor: Color(0xFF177767),
+        accentColor: Colors.green,
+        accentColorBrightness: Brightness.dark,
       ),
       
     );

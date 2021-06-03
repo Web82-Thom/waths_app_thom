@@ -12,10 +12,6 @@ import '../controllers/dialogues_controller.dart';
 class DialoguesView extends GetView<DialoguesController> {
   DialoguesController dialoguesController = Get.put(DialoguesController(),);
   final containerRadius = Radius.circular(30.0);
-  // DialoguesController dialoguesController = Get.find();
-  
-  // final int index;
-  // DialoguesView(this.index);
   
   @override
   Widget build(BuildContext context) {
@@ -28,15 +24,12 @@ class DialoguesView extends GetView<DialoguesController> {
         child: Icon(Icons.chat, color: Colors.white),
       ),
       body: Container(
-        child: 
-            ListView.builder(
+        child:ListView.builder(
           itemCount: dialoguesController.dialogues.length,
           itemBuilder: (context, index) { 
-            return CustomDialogues(dialoguesController.dialogues[index]);
-           
+            return CustomDialogues(dialoguesController.dialogues[index], index);
           },
-          ),
-        
+        ),
       ),
     );
   }

@@ -10,7 +10,7 @@ import 'package:whats_app_thom/app/routes/app_pages.dart';
 import '../controllers/dialogues_controller.dart';
 
 class DialoguesView extends GetView<DialoguesController> {
-  DialoguesController dialoguesController = Get.put(DialoguesController(),);
+  final DialoguesController dialoguesController = Get.put(DialoguesController(),);
   final containerRadius = Radius.circular(30.0);
   
   @override

@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Application",
       initialRoute: AppPages.INITIAL,
+      debugShowCheckedModeBanner: false,
       getPages: [
         GetPage(name: '/', page: () =>MyApp()),
         GetPage(name: '/home', page: () =>HomeView()),

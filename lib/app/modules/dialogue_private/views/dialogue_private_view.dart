@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
 // import 'package:whats_app_thom/app/routes/app_pages.dart';
 import 'package:emoji_picker/emoji_picker.dart';
+import 'package:whats_app_thom/app/modules/dialogue_private/widgets/attach_button/icon_attach_button.dart';
 
 import 'package:whats_app_thom/app/modules/dialogues/controllers/dialogues_controller.dart';
 import 'package:whats_app_thom/app/routes/app_pages.dart';
@@ -208,6 +209,7 @@ class DialoguePrivateView extends GetView<DialoguePrivateController> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),
+                          // TEXTFORMFIELD                   
                             child: TextFormField(
                               controller: dialoguePrivateController.dialogueController,
                               focusNode: dialoguePrivateController.focusNode,
@@ -229,12 +231,7 @@ class DialoguePrivateView extends GetView<DialoguePrivateController> {
                                 suffixIcon: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.attach_file,
-                                      ),
-                                    ),
+                                    IconAttachButton(),
                                     IconButton(
                                       onPressed: () {},
                                       icon: Icon(
@@ -280,7 +277,11 @@ class DialoguePrivateView extends GetView<DialoguePrivateController> {
       )
     );
   }
-  
+
+  Widget bottomSheet() {
+    return Container();
+  }
+
   Widget emojiSelect() {
     return EmojiPicker(
       rows:4,

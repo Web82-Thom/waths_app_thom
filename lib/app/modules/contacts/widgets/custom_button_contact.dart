@@ -15,22 +15,17 @@ class CustomButtonContacts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: (){
-        // Get.toNamed(Routes.DIALOGUE_PRIVATE, parameters: {"indexPassed": "$indexData"});
-      },
-      child: ListTile(
-        leading: CircleAvatar(
-          radius: 25,
-          backgroundColor: Colors.blue[200],
-          child: Icon(icon,),
-        ),
-        title: Text(
-          name,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
+    return ListTile(
+      leading: CircleAvatar(
+        radius: 25,
+        backgroundColor: Colors.blue[200],
+        child: Icon(icon,),
+      ),
+      title: Text(
+        name,
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

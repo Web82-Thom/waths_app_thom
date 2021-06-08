@@ -1,6 +1,4 @@
-import 'package:get/get.dart';
-
-class ContactModel{
+class GroupModel{
   int id;
   String name;
   String icon;
@@ -8,15 +6,15 @@ class ContactModel{
   String time;
   String currentMessage;
   String status;
-  bool select;
-  ContactModel(
+  bool select = false;
+  GroupModel(
     // {required this.name, required this.icon, required this.isGroup, required this.time, required this.currentMessage,}
-     this.id, this.name, this.icon, this.isGroup,  this.time,  this.currentMessage, this.status, this.select,
+     this.id,this.name, this.icon, this.isGroup,  this.time,  this.currentMessage, this.status, this.select,
   );
 
-  factory ContactModel.fromJson(Map<String, dynamic> json) =>
-    ContactModel(
-      json['id'],
+  factory GroupModel.fromJson(Map<String, dynamic> json) =>
+    GroupModel(
+      json['id'], 
       json['name'], 
       json['icon'], 
       json['isGroup'], 

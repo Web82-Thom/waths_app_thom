@@ -12,6 +12,8 @@ import 'package:whats_app_thom/app/modules/dialogues/bindings/dialogues_binding.
 import 'package:whats_app_thom/app/modules/dialogues/views/dialogues_view.dart';
 import 'package:whats_app_thom/app/modules/home/bindings/home_binding.dart';
 import 'package:whats_app_thom/app/modules/home/views/home_view.dart';
+import 'package:whats_app_thom/app/modules/new_group/bindings/new_group_binding.dart';
+import 'package:whats_app_thom/app/modules/new_group/views/new_group_view.dart';
 import 'package:whats_app_thom/app/modules/statut/bindings/statut_binding.dart';
 import 'package:whats_app_thom/app/modules/statut/views/statut_view.dart';
 
@@ -61,6 +63,11 @@ class AppPages {
       name: _Paths.CONTACTS,
       page: () => ContactsView(),
       binding: ContactsBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEW_GROUP,
+      page: () => NewGroupView(),
+      binding: NewGroupBinding(),
     ),
   ];
 }

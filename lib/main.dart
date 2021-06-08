@@ -6,6 +6,7 @@ import 'package:whats_app_thom/app/modules/contacts/views/contacts_view.dart';
 import 'package:whats_app_thom/app/modules/dialogue_private/views/dialogue_private_view.dart';
 import 'package:whats_app_thom/app/modules/dialogues/views/dialogues_view.dart';
 import 'package:whats_app_thom/app/modules/home/views/home_view.dart';
+import 'package:whats_app_thom/app/modules/new_group/views/new_group_view.dart';
 import 'package:whats_app_thom/app/modules/statut/views/statut_view.dart';
 
 import 'app/routes/app_pages.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/appels', page: () =>AppelsView()),
         GetPage(name: '/dialogue-private', page: () =>DialoguePrivateView()),
         GetPage(name: '/contacts', page: () =>ContactsView()),
+        GetPage(name: '/new-group', page: () =>NewGroupView()),
       ],
       theme: ThemeData(
         fontFamily: 'OpenSans',

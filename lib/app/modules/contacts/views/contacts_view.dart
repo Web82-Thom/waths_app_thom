@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:whats_app_thom/app/modules/contacts/Models/contact_model.dart';
 import 'package:whats_app_thom/app/modules/contacts/widgets/custom_button_contact.dart';
 import 'package:whats_app_thom/app/modules/contacts/widgets/custom_card_contact.dart';
 import 'package:whats_app_thom/app/modules/dialogues/controllers/dialogues_controller.dart';
+import 'package:whats_app_thom/app/routes/app_pages.dart';
 
 import '../controllers/contacts_controller.dart';
 
 class ContactsView extends GetView<ContactsController> {
 
   final ContactsController contactsController = Get.put(ContactsController());
+  // ContactsView(this.indexData);
+  // final int indexData;
+
 
   // final int indexPassed = int.parse("${Get.parameters['indexPassed']}");
 
@@ -72,11 +77,19 @@ class ContactsView extends GetView<ContactsController> {
           itemCount: contactsController.contacts.length,
           itemBuilder: (context, index) {
             if(index == 0) {
-              return CustomButtonContacts('Nouveau groupe', Icons.group);
+              return InkWell(
+                onTap: (){
+                  Get.toNamed(Routes.NEW_GROUP);
+                },
+                child: CustomButtonContacts('Nouveau groupe', Icons.group));
             } else if (index == 1) {
               return CustomButtonContacts('Nouveau contact', Icons.person_add);
             } 
-            return CustomCardContacts(contactsController.contacts[index], index);
+            return InkWell(
+              onTap: (){
+                // Get.toNamed(Routes.DIALOGUE_PRIVATE, parameters: {"indexPassed": "$indexData"});
+              },
+              child: CustomCardContacts(contactsController.contacts[index], index));
           }
           // => CustomCardContacts(contactsController.contacts[index-], index),
         ),

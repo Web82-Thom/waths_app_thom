@@ -12,6 +12,7 @@ abstract class Routes {
   static const CHAT_MODEL = _Paths.CHAT_MODEL;
   static const DIALOGUE_PRIVATE = _Paths.DIALOGUE_PRIVATE;
   static const CONTACTS = _Paths.CONTACTS;
+  static const NEW_GROUP = _Paths.NEW_GROUP;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const CHAT_MODEL = '/chat-model';
   static const DIALOGUE_PRIVATE = '/dialogue-private';
   static const CONTACTS = '/contacts';
+  static const NEW_GROUP = '/new-group';
 }

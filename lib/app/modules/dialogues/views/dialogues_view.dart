@@ -19,7 +19,7 @@ class DialoguesView extends GetView<DialoguesController> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('new message');
+          Get.toNamed(Routes.CONTACTS);
         },
         child: Icon(Icons.chat, color: Colors.white),
       ),

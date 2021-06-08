@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:whats_app_thom/app/modules/contacts/widgets/custom_button_contact.dart';
 import 'package:whats_app_thom/app/modules/contacts/widgets/custom_card_contact.dart';
 import 'package:whats_app_thom/app/modules/dialogues/controllers/dialogues_controller.dart';
 
@@ -66,9 +67,19 @@ class ContactsView extends GetView<ContactsController> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: contactsController.contacts.length,
-        itemBuilder: (context, index) => CustomCardContacts(contactsController.contacts[index], index),
+      body: Container(
+        child: ListView.builder(
+          itemCount: contactsController.contacts.length,
+          itemBuilder: (context, index) {
+            if(index == 0) {
+              return CustomButtonContacts('Nouveau groupe', Icons.group);
+            } else if (index == 1) {
+              return CustomButtonContacts('Nouveau contact', Icons.person_add);
+            } 
+            return CustomCardContacts(contactsController.contacts[index], index);
+          }
+          // => CustomCardContacts(contactsController.contacts[index-], index),
+        ),
       ),
     );
   }

@@ -10,6 +10,11 @@ class ContactsController extends GetxController {
     ContactModel('Noah ORTA', 'online'),
     ContactModel('M-G ORTA', 'offline'),
     ContactModel('Gilles ORTA', 'offline'),
+    ContactModel('J-m ORTA', 'offline'),
+    ContactModel('Melissa ORTA', 'offline'),
+    ContactModel('Marie ORTA', 'offline'),
+    ContactModel('Kate ORTA', 'offline'),
+    ContactModel('Moustique ORTA', 'offline'),
   ];
 
   final count = 0.obs;

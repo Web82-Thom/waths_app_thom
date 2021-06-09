@@ -14,11 +14,11 @@ class CustomCardContacts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return Obx(()=> ListTile(
       leading: Container(
         height: 50,
         width: 50,
-        child: Obx(()=>Stack(
+        child: Stack(
           children: [
             CircleAvatar(
               radius: 25,
@@ -45,7 +45,7 @@ class CustomCardContacts extends StatelessWidget {
             ) : Container(),
           ],
         ),
-        )
+        
       ),
       title: Text(
         contactsController.contacts[indexData].name,
@@ -60,6 +60,6 @@ class CustomCardContacts extends StatelessWidget {
           fontSize: 10,
         ),
       ),
-    );
+    ),);
   }
 }

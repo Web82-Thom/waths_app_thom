@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/contacts/Models/contact_model.dart';
 
 class ContactsController extends GetxController {
-
+  
   final List<ContactModel> contacts = [
-    ContactModel(0,'Thomas ORTA', 'person.svg', false, '14h29', 'Ola', 'online', true),
+    ContactModel(0,'Thomas ORTA', 'person.svg', false, '14h29', 'Ola', 'online', false),
     ContactModel(1,'Lisa ORTA', 'person.svg', false, '14h29', 'Que tale?', 'offline', false),
     ContactModel(2,'Sandrine ORTA', 'groups.svg', true, '14h15', 'Miuy bien ? y tu?', 'offline', false),
     ContactModel(3,'Noah ORTA', 'groups.svg', true, '14h15', 'Commo te liamas', 'online', false),

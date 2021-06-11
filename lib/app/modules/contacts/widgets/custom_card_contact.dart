@@ -32,7 +32,7 @@ class CustomCardContacts extends StatelessWidget {
               ),
             ),
             Obx(
-              ()=> contactsController.contacts[indexData].select ?  
+              ()=> contactsController.contacts[indexData].select ?
               Positioned(
                 bottom: 0,
                 right: 0,
@@ -49,7 +49,7 @@ class CustomCardContacts extends StatelessWidget {
             ),
           ],
         ),
-        
+
       ),
       title: Text(
         contactsController.contacts[indexData].name,
@@ -59,12 +59,12 @@ class CustomCardContacts extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        contactsController.contacts[indexData].status,
+        "${contactsController.contacts[indexData].status} - id: ${contactsController.contacts[indexData].id} ",
         style: TextStyle(
           fontSize: 10,
         ),
       ),
-    
-    ); 
+
+    );
   }
 }

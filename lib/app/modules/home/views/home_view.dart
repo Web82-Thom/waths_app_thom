@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:whats_app_thom/app/modules/appPhoto/controllers/app_photo_controller.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/app_photo_view.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
 import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
@@ -10,6 +11,8 @@ import 'package:whats_app_thom/app/modules/statut/views/statut_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  final HomeController homeController = Get.put(HomeController());
+  final AppPhotoController appPhotoController = Get.put(AppPhotoController());
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

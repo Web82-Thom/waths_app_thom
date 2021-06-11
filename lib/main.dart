@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:camera/camera.dart';
+import 'package:whats_app_thom/app/modules/appPhoto/views/app_photo_view.dart';
+import 'package:whats_app_thom/app/modules/appPhoto/controllers/app_photo_controller.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
 import 'package:whats_app_thom/app/modules/contacts/views/contacts_view.dart';
 import 'package:whats_app_thom/app/modules/dialogue_private/views/dialogue_private_view.dart';
@@ -11,7 +14,11 @@ import 'package:whats_app_thom/app/modules/statut/views/statut_view.dart';
 
 import 'app/routes/app_pages.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -23,6 +30,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () =>MyApp()),
         GetPage(name: '/home', page: () =>HomeView()),
+        GetPage(name: '/app-photo', page: () =>AppPhotoView()),
         GetPage(name: '/dialogues', page: () =>DialoguesView()),
         GetPage(name: '/status', page: () =>StatutView()),
         GetPage(name: '/appels', page: () =>AppelsView()),

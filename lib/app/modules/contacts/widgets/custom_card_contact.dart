@@ -14,7 +14,8 @@ class CustomCardContacts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(()=> ListTile(
+    return 
+        ListTile(
       leading: Container(
         height: 50,
         width: 50,
@@ -30,19 +31,22 @@ class CustomCardContacts extends StatelessWidget {
                 width: 35,
               ),
             ),
-            contactsController.contacts[indexData].select ?  Positioned(
-              bottom: 0,
-              right: 0,
-              child: CircleAvatar(
-                radius: 11,
-                backgroundColor: Colors.teal,
-                child: Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  size: 15,
+            Obx(
+              ()=> contactsController.contacts[indexData].select ?  
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: CircleAvatar(
+                  radius: 11,
+                  backgroundColor: Colors.teal,
+                  child: Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: 15,
+                  ),
                 ),
-              ),
-            ) : Container(),
+              ) : Container(),
+            ),
           ],
         ),
         
@@ -60,6 +64,7 @@ class CustomCardContacts extends StatelessWidget {
           fontSize: 10,
         ),
       ),
-    ),);
+    
+    ); 
   }
 }

@@ -21,7 +21,7 @@ class GroupModel{
       json['time'], 
       json['currentMessage'],
       json['status'],
-      json['select'],
+      json['select'].obs,
     );
 
   Map<String, dynamic> toJson() =>  {

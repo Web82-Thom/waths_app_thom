@@ -4,7 +4,7 @@ import 'package:whats_app_thom/app/modules/new_group/Models/group_model.dart';
 
 class NewGroupController extends GetxController {
   
-  final List<ContactModel> group = [];
+   List<ContactModel> group = [];
   
   @override
   void onInit() {

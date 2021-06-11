@@ -10,7 +10,7 @@ class ContactModel{
   String status;
   bool select;
   ContactModel(
-    // {required this.name, required this.icon, required this.isGroup, required this.time, required this.currentMessage,}
+    // {required this.id, required this.name, required this.icon, required this.isGroup, required this.time, required this.currentMessage, required this.status, required this.select}
      this.id, this.name, this.icon, this.isGroup,  this.time,  this.currentMessage, this.status, this.select,
   );
 

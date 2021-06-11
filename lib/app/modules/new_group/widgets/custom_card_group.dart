@@ -18,7 +18,7 @@ class CustomCardGroup extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Stack(
+          Obx(()=> Stack(
             children: [
               CircleAvatar(
                 radius: 25,
@@ -30,7 +30,7 @@ class CustomCardGroup extends StatelessWidget {
                   width: 35,
                 ),
               ),
-              // contactsController.contacts[indexData].select ?
+              contactsController.contacts[indexData].select ?
               Positioned(
                 bottom: 0,
                 right: 0,
@@ -44,10 +44,12 @@ class CustomCardGroup extends StatelessWidget {
                   ),
                 ),
               )
-              // : Container(),
+              : Container(),
             ],
           ),
-          SizedBox(height: 3,),
+          
+        ),
+        SizedBox(height: 3,),
           Text(
             '${contactsController.contacts[indexData].name}',
             style: TextStyle(

@@ -1,9 +1,11 @@
+import 'dart:io';
+
+import 'package:camera/camera.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class AppPhotoController extends GetxController {
-  //TODO: Implement AppPhotoController
-
-  final count = 0.obs;
+ 
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +18,4 @@ class AppPhotoController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

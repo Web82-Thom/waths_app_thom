@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class StatutController extends GetxController {
-  //TODO: Implement StatutController
 
   final count = 0.obs;
   @override

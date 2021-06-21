@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
 import 'package:get/get.dart';
-import 'package:whats_app_thom/app/modules/dialogue_private/views/dialogue_private_view.dart';
-import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
+
 import 'package:whats_app_thom/app/modules/dialogues/widgets/custom_dialogues.dart';
 import 'package:whats_app_thom/app/routes/app_pages.dart';
 

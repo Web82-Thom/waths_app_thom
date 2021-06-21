@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/contacts/Models/contact_model.dart';
-import 'package:whats_app_thom/app/modules/new_group/Models/group_model.dart';
 
 class NewGroupController extends GetxController {
   

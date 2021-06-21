@@ -2,17 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-
-// import 'package:get_cli/common/utils/json_serialize/json_ast/tokenize.dart';
-// import 'package:get_cli/common/utils/json_serialize/json_ast/json_ast.dart';
-// import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
-// import 'package:whats_app_thom/app/routes/app_pages.dart';
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:whats_app_thom/app/modules/dialogue_private/widgets/attach_button/icon_attach_button.dart';
-
 import 'package:whats_app_thom/app/modules/dialogues/controllers/dialogues_controller.dart';
-import 'package:whats_app_thom/app/routes/app_pages.dart';
-import '../controllers/dialogue_private_controller.dart';
+import 'package:whats_app_thom/app/modules/dialogue_private/controllers/dialogue_private_controller.dart';
 
 class DialoguePrivateView extends GetView<DialoguePrivateController> {
 
@@ -20,9 +13,6 @@ class DialoguePrivateView extends GetView<DialoguePrivateController> {
   final DialoguesController dialoguesController = Get.put(DialoguesController(),);
 
   final int indexPassed = int.parse("${Get.parameters['indexPassed']}");
-  // bool show = false;
-  // FocusNode focusNode = FocusNode();
-  
 
   @override
   Widget build(BuildContext context) {

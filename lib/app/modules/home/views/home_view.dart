@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/controllers/app_photo_controller.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/app_photo_view.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
-import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';
 import 'package:whats_app_thom/app/modules/dialogues/views/dialogues_view.dart';
 import 'package:whats_app_thom/app/modules/statut/views/statut_view.dart';
 

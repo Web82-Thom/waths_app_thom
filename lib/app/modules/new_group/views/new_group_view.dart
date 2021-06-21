@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/contacts/controllers/contacts_controller.dart';
-import 'package:whats_app_thom/app/modules/contacts/widgets/custom_card_contact.dart';
+import 'package:whats_app_thom/app/modules/new_group/widgets/custom_item_card_group.dart';
 import 'package:whats_app_thom/app/modules/new_group/widgets/custom_card_group.dart';
 import 'package:whats_app_thom/app/modules/new_group/controllers/new_group_controller.dart';
 
@@ -12,7 +12,8 @@ class NewGroupView extends GetView<NewGroupController> {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(
+        ()=>Scaffold(
       appBar: AppBar(
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -40,8 +41,10 @@ class NewGroupView extends GetView<NewGroupController> {
           ),
         ],
       ),
-      body: Obx(
-        ()=> Stack(
+      body:
+      //  Obx(
+      //   ()=>
+         Stack(
           children: [
             ListView.builder(
               itemCount: contactsController.contacts.length + 1,
@@ -57,20 +60,20 @@ class NewGroupView extends GetView<NewGroupController> {
                       contactsController.contacts[index-1].select = false;
                       groupController.group.remove(contactsController.contacts[index-1]);
                       print(contactsController.contacts[index].select);
-                      print(contactsController.contacts[index].toJson());
+                      // print(contactsController.contacts[index-1].toJson());
                       print(' la groupe contient = ${groupController.group.length} contacts');
                     }
                     else {
                       contactsController.contacts[index-1].select = true;
                       groupController.group.add(contactsController.contacts[index-1]);
-
                       print(contactsController.contacts[index-1].select);
                       // groupController.group.remove(contactsController.contacts[index-1]);
                       print('id = ${contactsController.contacts[index-1].id}');
-                      print(' la groupe contient = ${groupController.group.length} contacts');
+                      print(contactsController.contacts[index-1].toJson());
+                      print(' le groupe contient = ${groupController.group.length} contacts');
                     }
                   },
-                  child: CustomCardContacts(contactsController.contacts[index-1], index-1),
+                  child: CustomItemCardContacts(contactsController.contacts[index-1], index-1),
                 );
               }
             ),
@@ -91,6 +94,7 @@ class NewGroupView extends GetView<NewGroupController> {
                             print('clear');
                             groupController.group.remove(contactsController.contacts[index]);
                             contactsController.contacts[index].select = false;
+                            print(' le groupe contient = ${groupController.group.length} contacts');
                           },
                           child: 
                           CustomCardGroup(contactsController.contacts[index], index),
@@ -108,7 +112,8 @@ class NewGroupView extends GetView<NewGroupController> {
             ),
           ],
         ),
-      ),
+      // ),
+    ),
     );
   }
 }

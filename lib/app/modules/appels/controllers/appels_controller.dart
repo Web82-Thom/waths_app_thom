@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class AppelsController extends GetxController {
-  //TODO: Implement AppelsController
 
   final count = 0.obs;
   @override

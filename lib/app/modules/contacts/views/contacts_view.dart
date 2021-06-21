@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:whats_app_thom/app/modules/contacts/Models/contact_model.dart';
 import 'package:whats_app_thom/app/modules/contacts/widgets/custom_button_contact.dart';
 import 'package:whats_app_thom/app/modules/contacts/widgets/custom_card_contact.dart';
-import 'package:whats_app_thom/app/modules/dialogues/controllers/dialogues_controller.dart';
 import 'package:whats_app_thom/app/routes/app_pages.dart';
 
 import '../controllers/contacts_controller.dart';

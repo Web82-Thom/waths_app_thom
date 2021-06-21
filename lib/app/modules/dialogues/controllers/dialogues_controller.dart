@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:whats_app_thom/app/modules/dialogues/Models/dialogue_model.dart';

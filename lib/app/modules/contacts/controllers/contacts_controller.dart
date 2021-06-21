@@ -17,6 +17,8 @@ class ContactsController extends GetxController {
     ContactModel(10,'Moustique ORTA','person.svg', false, '14h54', '????????????', 'offline', false),
   ].obs;
 
+  var isSelect= false.obs;
+  
   @override
   void onInit() {
     super.onInit();

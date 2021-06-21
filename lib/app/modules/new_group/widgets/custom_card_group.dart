@@ -6,7 +6,6 @@ import 'package:whats_app_thom/app/modules/contacts/controllers/contacts_control
 
 class CustomCardGroup extends StatelessWidget {
   final ContactsController contactsController = Get.put(ContactsController());
-//  CustomCardGroup({ Key key }) : super(key: key);
   CustomCardGroup(this.dialogueModel, this.indexData);
   final ContactModel dialogueModel;
   final int indexData;
@@ -18,7 +17,7 @@ class CustomCardGroup extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Obx(()=> Stack(
+          Stack(
             children: [
               CircleAvatar(
                 radius: 25,
@@ -47,8 +46,6 @@ class CustomCardGroup extends StatelessWidget {
               : Container(),
             ],
           ),
-          
-        ),
         SizedBox(height: 3,),
           Text(
             '${contactsController.contacts[indexData].name}',

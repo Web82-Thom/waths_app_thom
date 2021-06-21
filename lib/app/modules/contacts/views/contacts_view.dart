@@ -74,7 +74,7 @@ class ContactsView extends GetView<ContactsController> {
       ),
       body: Container(
         child: ListView.builder(
-          itemCount: contactsController.contacts.length,
+          itemCount: contactsController.contacts.length + 2,
           itemBuilder: (context, index) {
             if(index == 0) {
               return InkWell(
@@ -85,11 +85,14 @@ class ContactsView extends GetView<ContactsController> {
             } else if (index == 1) {
               return CustomButtonContacts('Nouveau contact', Icons.person_add);
             } 
-            return InkWell(
+            return 
+            InkWell(
               onTap: (){
                 // Get.toNamed(Routes.DIALOGUE_PRIVATE, parameters: {"indexPassed": "$indexData"});
               },
-              child: CustomCardContacts(contactsController.contacts[index], index));
+              child: 
+              CustomCardContacts(contactsController.contacts[index - 2], index-2)
+            );
           }
           // => CustomCardContacts(contactsController.contacts[index-], index),
         ),

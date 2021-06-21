@@ -59,7 +59,7 @@ class CustomCardContacts extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        contactsController.contacts[indexData].status,
+        '${contactsController.contacts[indexData].status} - id ${contactsController.contacts[indexData].id}',
         style: TextStyle(
           fontSize: 10,
         ),

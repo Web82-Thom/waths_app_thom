@@ -14,6 +14,8 @@ class ContactModel{
      this.id, this.name, this.icon, this.isGroup,  this.time,  this.currentMessage, this.status, this.select,
   );
 
+  final isSelected = false.obs;
+
   factory ContactModel.fromJson(Map<String, dynamic> json) =>
     ContactModel(
       json['id'],

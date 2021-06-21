@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/contacts/controllers/contacts_controller.dart';
 import 'package:whats_app_thom/app/modules/contacts/widgets/custom_card_contact.dart';
-import 'package:whats_app_thom/app/modules/new_group/Models/group_model.dart';
 import 'package:whats_app_thom/app/modules/new_group/widgets/custom_card_group.dart';
-
-import '../controllers/new_group_controller.dart';
+import 'package:whats_app_thom/app/modules/new_group/controllers/new_group_controller.dart';
 
 class NewGroupView extends GetView<NewGroupController> {
   final NewGroupController groupController = Get.put(NewGroupController());
-
   final ContactsController  contactsController = Get.put(ContactsController());
   
   @override
@@ -43,79 +40,75 @@ class NewGroupView extends GetView<NewGroupController> {
           ),
         ],
       ),
-      body: Obx(()=> Stack(
-        children: [
-          ListView.builder(
-            itemCount: contactsController.contacts.length,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return Container(
-                  height: groupController.group.length > 0 ? 90 : 10,
+      body: Obx(
+        ()=> Stack(
+          children: [
+            ListView.builder(
+              itemCount: contactsController.contacts.length + 1,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return Container(
+                    height: groupController.group.length == 0 ? 10 : 90,
+                  );
+                }
+                return InkWell(
+                  onTap: () {
+                    if(contactsController.contacts[index-1].select == true) {
+                      contactsController.contacts[index-1].select = false;
+                      groupController.group.remove(contactsController.contacts[index-1]);
+                      print(contactsController.contacts[index].select);
+                      print(contactsController.contacts[index].toJson());
+                      print(' la groupe contient = ${groupController.group.length} contacts');
+                    }
+                    else {
+                      contactsController.contacts[index-1].select = true;
+                      groupController.group.add(contactsController.contacts[index-1]);
+
+                      print(contactsController.contacts[index-1].select);
+                      // groupController.group.remove(contactsController.contacts[index-1]);
+                      print('id = ${contactsController.contacts[index-1].id}');
+                      print(' la groupe contient = ${groupController.group.length} contacts');
+                    }
+                  },
+                  child: CustomCardContacts(contactsController.contacts[index-1], index-1),
                 );
               }
-              return InkWell(
-                onTap: () {
-                  // print(contactsController.contacts[index].toJson(),);
-                  // print(contactsController.contacts.length);
-                  // print(contactsController.contacts[index].id);
-                  if(contactsController.contacts[index].select == true) {
-                    //manque le setState
-                    contactsController.contacts[index].select = false;
-                    groupController.group.remove(contactsController.contacts[index]);
-
-                    print(contactsController.contacts[index].select);
-                    print(groupController.group.length);
-                  }
-                  else {
-                    //manque le setState
-                    contactsController.contacts[index].select = true;
-                    groupController.group.add(contactsController.contacts[index]);
-
-                    print(contactsController.contacts[index].select);
-                    print(groupController.group.length);
-                  }
-                },
-                child: CustomCardContacts(contactsController.contacts[index], index),
-              );
-            }
-          ),
-          // groupController.group.length > 0 ? 
-          Column(
-            children: [
-              Container(
-                height: 75,
-                color: Colors.white,
-                child: 
-                GetX<ContactsController>(
-                  // stream: null,
-                  builder: (controller) {
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: controller.contacts.length,
-                      itemBuilder: (context, index) {
-                        if(contactsController.contacts[index].select == true) {
-                          return InkWell(
-                            onTap: (){
-                              print('clear');
-                              groupController.group.remove(contactsController.contacts[index]);
-                              contactsController.contacts[index].select = false;
-                            },
-                            child: CustomCardGroup(contactsController.contacts[index], index)
-                          );
-                        } else {
-                          return Container();
-                        }
-                      },
-                    );
-                  },
+            ),
+            Column(
+              children: [
+                // Contact display in group
+                Container(
+                  height: groupController.group.length == 0 ? 0 : 90,
+                  color: Colors.yellow[100],
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: groupController.group.length,
+                    itemBuilder: (context, index) {
+                      // return CustomCardGroup(groupController.group[index], index);
+                      if(contactsController.contacts[index].select == true) {
+                        return InkWell(
+                          onTap: (){
+                            print('clear');
+                            groupController.group.remove(contactsController.contacts[index]);
+                            contactsController.contacts[index].select = false;
+                          },
+                          child: 
+                          CustomCardGroup(contactsController.contacts[index], index),
+                        );
+                      } else {
+                        return Container();
+                      }
+                    },
+                  ),
                 ),
-              ),
-              Divider(thickness: 1,)
-            ],
-          ),
-          // : Container(),
-        ],
-      ),)
+                Divider(
+                  thickness: 1,
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

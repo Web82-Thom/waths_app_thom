@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import 'package:whats_app_thom/app/modules/appPhoto/bindings/app_photo_binding.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/app_photo_view.dart';
+import 'package:whats_app_thom/app/modules/appPhoto/views/photo_take_view.dart';
 import 'package:whats_app_thom/app/modules/appels/bindings/appels_binding.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
 import 'package:whats_app_thom/app/modules/contacts/bindings/contacts_binding.dart';
@@ -68,6 +69,11 @@ class AppPages {
       name: _Paths.NEW_GROUP,
       page: () => NewGroupView(),
       binding: NewGroupBinding(),
+    ),
+    GetPage(
+      name: _Paths.PHOTO_TAKE,
+      page: () => PhotoTakeView(INITIAL),
+      binding: AppPhotoBinding(),
     ),
   ];
 }

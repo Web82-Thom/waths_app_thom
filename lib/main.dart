@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+
+import 'package:camera/camera.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/app_photo_view.dart';
+import 'package:whats_app_thom/app/modules/appPhoto/views/photo_take_view.dart';
+import 'package:whats_app_thom/app/modules/appPhoto/widgets/camera_screen.dart';
 import 'package:whats_app_thom/app/modules/appels/views/appels_view.dart';
 import 'package:whats_app_thom/app/modules/contacts/views/contacts_view.dart';
 import 'package:whats_app_thom/app/modules/dialogue_private/views/dialogue_private_view.dart';
@@ -15,6 +18,7 @@ import 'app/routes/app_pages.dart';
 // void main() => runApp(MyApp());
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp(MyApp());
 }
 
@@ -35,6 +39,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/dialogue-private', page: () =>DialoguePrivateView()),
         GetPage(name: '/contacts', page: () =>ContactsView()),
         GetPage(name: '/new-group', page: () =>NewGroupView()),
+        GetPage(name: '/photo-take', page: () =>PhotoTakeView("_")),
       ],
       theme: ThemeData(
         fontFamily: 'OpenSans',

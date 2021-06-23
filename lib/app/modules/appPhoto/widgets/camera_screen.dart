@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/controllers/app_photo_controller.dart';
@@ -8,7 +9,7 @@ import 'package:whats_app_thom/app/modules/appPhoto/views/photo_take_view.dart';
 List<CameraDescription> cameras;
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({Key key}) : super(key: key);
+  CameraScreen({Key key}) : super(key: key);
 
   @override
   _CameraScreenState createState() => _CameraScreenState();
@@ -16,19 +17,21 @@ class CameraScreen extends StatefulWidget {
 
 class _CameraScreenState extends State<CameraScreen> {
   CameraController _cameraController;
-  final appController = AppPhotoController();
+  final AppPhotoController appPhotoController = Get.put(AppPhotoController());
 
-  Future<void> cameraValue;
-
+  // final appController = AppPhotoController();
+  // Future<void> cameraValue;
+  bool isRecord = false;
+  String videoPath = '';
   @override
   void initState() {
     super.initState();
     _cameraController = CameraController(
       cameras[0],
-      ResolutionPreset.high,
-      imageFormatGroup: ImageFormatGroup.yuv420,
+      ResolutionPreset.values.first,
+      // imageFormatGroup: ImageFormatGroup.yuv420,
     );
-    cameraValue = _cameraController.initialize();
+    appPhotoController.cameraValue = _cameraController.initialize();
   }
 
   @override
@@ -44,7 +47,7 @@ class _CameraScreenState extends State<CameraScreen> {
       body: Stack(
         children: [
           FutureBuilder(
-            future: cameraValue,
+            future: appPhotoController.cameraValue,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return CameraPreview(_cameraController);
@@ -78,15 +81,50 @@ class _CameraScreenState extends State<CameraScreen> {
                           size: 30,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          takePhoto(context);
+                      GestureDetector(
+                        onLongPress: () async {
+                          final path = join(
+                              (await getTemporaryDirectory()).path,
+                              "${DateTime.now()}.mp4");
+                          await _cameraController.startVideoRecording();
+                          setState(() {
+                            isRecord = true;
+                            videoPath = path;
+                          });
+                          print(path);
+                          print('longpress for start record video');
                         },
-                        child: Icon(
-                          Icons.panorama_fish_eye,
-                          color: Colors.white,
-                          size: 70,
-                        ),
+                        onLongPressUp: () async {
+                          final path = join(
+                              (await getTemporaryDirectory()).path,
+                              "${DateTime.now()}.mp4");
+                          await _cameraController.stopVideoRecording();
+                          setState(() {
+                            isRecord = false;
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (builder) => PhotoTakeView(path),
+                            ),
+                          );
+                          print('longpressup end video');
+                        },
+                        onTap: () {
+                          if (!isRecord) {
+                            takePhoto(context);
+                          }
+                        },
+                        child: isRecord
+                            ? Icon(
+                                Icons.radio_button_on,
+                                color: Colors.red,
+                              )
+                            : Icon(
+                                Icons.panorama_fish_eye,
+                                color: Colors.white,
+                                size: 70,
+                              ),
                       ),
                       IconButton(
                         onPressed: () {},

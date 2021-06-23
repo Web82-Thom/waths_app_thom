@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/controllers/app_photo_controller.dart';
+import 'package:video_player/video_player.dart';
 
-class PhotoTakeView extends GetView<AppPhotoController> {
+class VideoTakeView extends GetView<AppPhotoController> {
   final AppPhotoController appPhotoController = Get.put(AppPhotoController());
 
-  PhotoTakeView(this.path,);
+  VideoTakeView(
+    this.path,
+  );
   final String path;
 
   @override
@@ -55,10 +58,13 @@ class PhotoTakeView extends GetView<AppPhotoController> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 150,
-              child: Image.file(
-                File(path),
-                fit: BoxFit.cover,
-              ),
+              child: appPhotoController.controller.value.isInitialized
+                  ? AspectRatio(
+                      aspectRatio:
+                          appPhotoController.controller.value.aspectRatio,
+                      child: VideoPlayer(appPhotoController.controller),
+                    )
+                  : Container(),
             ),
             Positioned(
               bottom: 0.0,
@@ -100,7 +106,29 @@ class PhotoTakeView extends GetView<AppPhotoController> {
                   ),
                 ),
               ),
-            )
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: InkWell(
+                onTap: () {
+                  // il doit i avoir un setState
+                  appPhotoController.controller.value.isPlaying
+                      ? appPhotoController.controller.pause()
+                      : appPhotoController.controller.play();
+                },
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.black38,
+                  child: Icon(
+                    appPhotoController.controller.value.isPlaying
+                        ? Icons.pause
+                        : Icons.play_arrow,
+                    color: Colors.white,
+                    size: 50,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

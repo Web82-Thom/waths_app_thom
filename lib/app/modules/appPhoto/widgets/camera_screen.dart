@@ -5,6 +5,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/controllers/app_photo_controller.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/photo_take_view.dart';
+import 'package:whats_app_thom/app/modules/appPhoto/views/video_take_view.dart';
 
 List<CameraDescription> cameras;
 
@@ -29,7 +30,7 @@ class _CameraScreenState extends State<CameraScreen> {
     _cameraController = CameraController(
       cameras[0],
       ResolutionPreset.values.first,
-      // imageFormatGroup: ImageFormatGroup.yuv420,
+      imageFormatGroup: ImageFormatGroup.yuv420,
     );
     appPhotoController.cameraValue = _cameraController.initialize();
   }
@@ -50,7 +51,11 @@ class _CameraScreenState extends State<CameraScreen> {
             future: appPhotoController.cameraValue,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return CameraPreview(_cameraController);
+                return Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: CameraPreview(_cameraController),
+                );
               } else {
                 return Center(
                   child: CircularProgressIndicator(),
@@ -83,29 +88,23 @@ class _CameraScreenState extends State<CameraScreen> {
                       ),
                       GestureDetector(
                         onLongPress: () async {
-                          final path = join(
-                              (await getTemporaryDirectory()).path,
-                              "${DateTime.now()}.mp4");
                           await _cameraController.startVideoRecording();
                           setState(() {
                             isRecord = true;
-                            videoPath = path;
                           });
-                          print(path);
                           print('longpress for start record video');
                         },
                         onLongPressUp: () async {
-                          final path = join(
-                              (await getTemporaryDirectory()).path,
-                              "${DateTime.now()}.mp4");
-                          await _cameraController.stopVideoRecording();
+                          XFile videopath =
+                              await _cameraController.stopVideoRecording();
                           setState(() {
                             isRecord = false;
                           });
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (builder) => PhotoTakeView(path),
+                              builder: (builder) =>
+                                VideoTakeView(videopath.path),
                             ),
                           );
                           print('longpressup end video');
@@ -158,13 +157,11 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   void takePhoto(BuildContext context) async {
-    final path =
-        join((await getTemporaryDirectory()).path, "${DateTime.now()}.png");
-    await _cameraController.takePicture();
+    XFile path = await _cameraController.takePicture();
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (builder) => PhotoTakeView(path),
+        builder: (builder) => PhotoTakeView(path.path),
       ),
     );
     print(path);

@@ -7,22 +7,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
 
 class AppPhotoController extends GetxController {
- VideoPlayerController controller;
+  VideoPlayerController controller;
   CameraController cameraController;
 
- Future<void> cameraValue;
- String path= '';
-//  void pathVideo () async {
-//     final path = join(
-//       (await getTemporaryDirectory()).path,"${DateTime.now()}.mp4");
-//       // await _cameraController.startVideoRecording();
-// }
+  Future<void> cameraValue;
+  String path = '';
 
   @override
   void onInit() {
     super.onInit();
     controller = VideoPlayerController.file(File(path));
-    
   }
 
   @override

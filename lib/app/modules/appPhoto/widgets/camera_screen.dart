@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:get/get.dart';
@@ -20,10 +22,11 @@ class _CameraScreenState extends State<CameraScreen> {
   CameraController _cameraController;
   final AppPhotoController appPhotoController = Get.put(AppPhotoController());
 
-  // final appController = AppPhotoController();
-  // Future<void> cameraValue;
   bool isRecord = false;
-  String videoPath = '';
+  bool isFlash = false;
+  bool iscameraFront = true;
+  double transform = 0;
+
   @override
   void initState() {
     super.initState();
@@ -79,9 +82,16 @@ class _CameraScreenState extends State<CameraScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            isFlash = !isFlash;
+                          });
+                          isFlash
+                              ? _cameraController.setFlashMode(FlashMode.torch)
+                              : _cameraController.setFlashMode(FlashMode.off);
+                        },
                         icon: Icon(
-                          Icons.flash_off,
+                          isFlash ? Icons.flash_on : Icons.flash_off,
                           color: Colors.white,
                           size: 30,
                         ),
@@ -104,7 +114,7 @@ class _CameraScreenState extends State<CameraScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (builder) =>
-                                VideoTakeView(videopath.path),
+                                  VideoTakeView(videopath.path),
                             ),
                           );
                           print('longpressup end video');
@@ -126,11 +136,27 @@ class _CameraScreenState extends State<CameraScreen> {
                               ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.flip_camera_ios,
-                          color: Colors.white,
-                          size: 30,
+                        onPressed: () {
+                          setState(() {
+                            iscameraFront = !iscameraFront;
+                            transform = transform + pi;
+                          });
+                          int cameraPos = iscameraFront ? 0 : 1;
+                          _cameraController = CameraController(
+                            cameras[cameraPos],
+                            ResolutionPreset.values.first,
+                            imageFormatGroup: ImageFormatGroup.yuv420,
+                          );
+                          appPhotoController.cameraValue =
+                              _cameraController.initialize();
+                        },
+                        icon: Transform.rotate(
+                          angle:transform,
+                          child: Icon(
+                            Icons.flip_camera_ios,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                         ),
                       ),
                     ],

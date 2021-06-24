@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:camera/camera.dart';
-import 'package:whats_app_thom/app/modules/appPhoto/controllers/app_photo_controller.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/app_photo_view.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/views/photo_take_view.dart';
 import 'package:whats_app_thom/app/modules/appPhoto/widgets/camera_screen.dart';

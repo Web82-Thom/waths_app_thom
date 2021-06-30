@@ -13,14 +13,17 @@ class DialoguePrivateController extends GetxController {
   //methode socket connection
   void connect(){
     socket = IO.io(
-      "http://192.168.1.14:20", <String, dynamic>{
+      "http://192.168.1.14:5000", <String, dynamic>{
       "transports" : ["websocket"],
+      "autoConnect" : true,
       },
     );
     socket.connect();
-    // socket.onConnect((data) => print("Connected"));
-    print('connection : ${socket.connected}');
     socket.emit('/test', 'hello world');
+
+
+    socket.onConnect((data) => print(data));
+    print('connection : ${socket.connected}');
   }
 
   @override
